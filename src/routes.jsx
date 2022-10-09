@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "./App";
+import Dashboard from "./components/Dashboard";
 import Home from "./components/Home";
 import Login from "./components/Login";
 
@@ -18,7 +19,7 @@ const router = createBrowserRouter([
       },
       {
         path: "dashboard",
-        element: <p>en proceso</p>
+        element: <Dashboard />
       }
     ]
   },

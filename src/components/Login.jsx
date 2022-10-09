@@ -1,5 +1,6 @@
 import { gql, useLazyQuery } from '@apollo/client';
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 const LOGIN_QUERY = gql`
   query Login ($email: String!, $password: String!) {
@@ -10,8 +11,21 @@ const LOGIN_QUERY = gql`
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const navigate = useNavigate();
+
   const [loginQ, {loading, error, data}] = useLazyQuery(LOGIN_QUERY, {
-    onCompleted: (data) => console.log('DATA:', data)
+    onCompleted: (data) => {
+      console.log('DATA:', data);
+      localStorage.setItem('userId', data.login);
+
+      if (data.login) {
+        navigate("/dashboard");
+      } else {
+        alert('Invalid credentials')
+      }
+    },
+    onError: (error) => console.log('ERROR: =>', error),
   });
 
   const handleSubmit = (e) => {
