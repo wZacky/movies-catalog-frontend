@@ -1,14 +1,19 @@
 import React from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useLocation } from 'react-router-dom'
+import LogoutButton from './LogoutButton'
 
-function Navbar() {
+function Navbar({loggedIn, setCredential}) {
+  //const location = useLocation();
+  //const url = location.pathname;
+  
   return (
     <nav>
       <p>Hola</p>
-      <NavLink to="/login" >Login</NavLink>
-      <NavLink to="/" >Home</NavLink>
-      <NavLink to="/dashboard" >Dashboard</NavLink>
-      <NavLink to="/register-movie" >New Movie</NavLink>
+      {loggedIn && <NavLink to="/" >Home</NavLink>}
+      {loggedIn && <NavLink to="/dashboard" >Dashboard</NavLink>}
+      {loggedIn && <NavLink to="/register-movie" >New Movie</NavLink>}
+      {loggedIn && <LogoutButton setCredential={setCredential} />}
+      {!loggedIn && <NavLink to="/login" >Login</NavLink>}
     </nav>
   )
 }

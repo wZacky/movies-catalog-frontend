@@ -1,4 +1,4 @@
-import { gql, useLazyQuery } from '@apollo/client'
+import { gql, useLazyQuery, useQuery } from '@apollo/client'
 import React, { useEffect, useState } from 'react'
 import MovieCard from './MovieCard';
 
@@ -23,11 +23,10 @@ function Dashboard() {
     },
     onError: (error) => console.log(error)
   })
-  //R.isEmpty()
+  
   if (loading) {
     console.log('cargando');
   }
-
   if (error) {
     console.log('EROR:', error);
   }

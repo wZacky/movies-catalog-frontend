@@ -1,5 +1,6 @@
 import { gql, useMutation } from '@apollo/client'
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const ADD_MOVIE = gql`
   mutation AddMovie($title: String!,$image: String!,$description: String!,$registeredBy: String!,$likes: Int) {
@@ -20,6 +21,7 @@ function MovieForm() {
     image: '',
     likes: 0,
   })
+  const navigate = useNavigate();
 
   const [addMovieMutation, { loading, data, error }] = useMutation(ADD_MOVIE, {
     onCompleted: (data) => {
@@ -49,7 +51,8 @@ function MovieForm() {
         registeredBy: userId,
         likes: Number(likes),
       }
-    })
+    });
+    navigate("/dashboard", {replace: true});
   }
   return (
     <form onSubmit={handleSubmit}>

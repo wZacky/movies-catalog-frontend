@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Outlet } from 'react-router-dom'
 import './App.css'
 import Home from './components/Home'
@@ -6,12 +6,23 @@ import Navbar from './components/Navbar'
 //import Login from './components/Login'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [credential, setCredential] = useState(false);
+
+  const unlogged = () => {
+    setCredential(false)
+  }
+  
+  useEffect(() => {
+    const userId = localStorage.getItem('userId');
+    if (userId) {
+      setCredential(true)
+    }
+  }, [credential])
 
   return (
     <div className="App">
-      <Navbar />
-      <Outlet />
+      <Navbar loggedIn={credential} setCredential={unlogged} />
+      <Outlet context={[credential, setCredential]} />
     </div>
   )
 }
