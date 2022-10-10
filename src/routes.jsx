@@ -3,6 +3,7 @@ import App from "./App";
 import Dashboard from "./components/Dashboard";
 import Home from "./components/Home";
 import Login from "./components/Login";
+import MovieForm from "./components/MovieForm";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
       {
         path: "dashboard",
         element: <Dashboard />
+      },
+      {
+        path: "register-movie",
+        element: <MovieForm />
       }
     ]
   },
