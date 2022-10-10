@@ -1,5 +1,6 @@
 import { gql, useLazyQuery } from '@apollo/client'
 import React, { useEffect, useState } from 'react'
+import MovieCard from './MovieCard';
 
 const USER_CATALOG = gql`
   query Catalog ($userId: ID!) {
@@ -35,6 +36,10 @@ function Dashboard() {
   console.log('ID:');
   console.log(userId);
 
+  const updateList = (id) => {
+    setMovies(catalog.filter(movie => movie.id !== id))
+  }
+
   useEffect(() => {
     userCatalogQuery({variables: {userId}})
     console.log(data);
@@ -50,11 +55,7 @@ function Dashboard() {
         console.log(movie);
         return (
           <div key={movie.id}>
-            <h3>{movie.title}</h3>
-            <p>{movie.id}</p>
-            <p>{movie.description}</p>
-            <p>{movie.image}</p>
-            <p>{movie.likes}</p>
+            <MovieCard movie={movie} updateList={updateList} />
           </div>
         )
       })}
