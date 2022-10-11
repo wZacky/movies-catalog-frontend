@@ -12,8 +12,8 @@ function LogoutButton(props) {
     navigate("/", {replace: true})
   }
   return (
-    <button onClick={handleClick}>
-      Log-Out
+    <button onClick={handleClick} className="btn bg-logout-btn btn-sm ms-5">
+      Logout
     </button>
   )
 }

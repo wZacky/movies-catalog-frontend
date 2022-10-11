@@ -1,0 +1,62 @@
+body {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.bg-main {
+  background-color: #2F3E46;
+}
+
+.bg-card {
+  background-color: #354F52;
+}
+
+.bg-like-btn {
+  background-color: #06d6a0;
+}
+
+.bg-delete-btn {
+  background-color: #CAD2C5;
+}
+
+.bg-login-btn {
+  background-color: #e9c46a;
+}
+
+.bg-logout-btn {
+  background-color: #e9c46a;
+}
+
+.font-custom-color {
+  color: #f1faee;
+}
+
+.a-custom {
+  padding: 4px;
+  text-decoration: none;
+  color: #cad2c5;
+  font-style: oblique;
+  font-size: xx-large;
+  font-weight: bold;
+}
+
+.a-sub-custom {
+  color: #f1faee;
+}
+
+.a-sub-custom:hover {
+  color: #06d6a0;
+}
+
+.a-custom:hover {
+  width: fit-content;
+  background-color: #edf2f4;
+  color: #e9c46a;
+  border-radius: 5%;
+  transition-duration: 280ms;
+}
+
+img {
+  object-fit: cover;
+  height: 220px;
+  width: 150px;
+}

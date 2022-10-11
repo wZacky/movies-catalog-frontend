@@ -22,7 +22,7 @@ function DeleteButton({movieId, updateList}) {
   }
 
   return (
-    <button onClick={() => handleClick(movieId)}>
+    <button onClick={() => handleClick(movieId)} className='bg-delete-btn btn mt-2'>
       Delete
     </button>
   )

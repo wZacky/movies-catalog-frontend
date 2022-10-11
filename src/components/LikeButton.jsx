@@ -22,7 +22,7 @@ function LikeButton({ movieId, likes, refreshNumberLikes }) {
   }
 
   return (
-    <button onClick={() => handleClick(movieId, likes)}>
+    <button onClick={() => handleClick(movieId, likes)} className='bg-like-btn btn'>
       Like
     </button>
   )

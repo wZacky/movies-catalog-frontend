@@ -7,6 +7,7 @@ import { BrowserRouter, createBrowserRouter, RouterProvider } from 'react-router
 import Home from './components/Home'
 import router from './routes.jsx'
 import Navbar from './components/Navbar'
+import { AppContextProvider } from './context/AppContext'
 
 const client = new ApolloClient({
   uri: 'http://127.0.0.1:4000/graphql',
@@ -19,9 +20,11 @@ const client = new ApolloClient({
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ApolloProvider client={client}>
-      <RouterProvider router={router}>
-        <App />
-      </RouterProvider>
+      <AppContextProvider>
+        <RouterProvider router={router}>
+          <App />
+        </RouterProvider>
+      </AppContextProvider>
     </ApolloProvider>
   </React.StrictMode>
 )

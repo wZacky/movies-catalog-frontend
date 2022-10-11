@@ -10,15 +10,21 @@ function MovieCard({ movie, updateList }) {
   }
 
   return (
-    <div>
-      <h3>{movie.title}</h3>
-      <p>{movie.id}</p>
-      <p>{movie.description}</p>
-      <p>{movie.image}</p>
-      <p>{likes}</p>
-
-      <LikeButton movieId={movie.id} likes={likes} refreshNumberLikes={refreshNumberLikes} />
-      <DeleteButton movieId={movie.id} updateList={updateList} />
+    <div className='bg-card row row-cols-2 mx-4 gy-2 shadow p-1 rounded' style={{width: "350px"}}>
+      <div className='col'>
+        <img alt='image movie' src={movie.image} />
+      </div>
+      <div className='col'>
+        <div className='row'>
+          <h3>{movie.title}</h3>
+          <p>{movie.description}</p>
+          <p><i>Likes:</i> {likes}</p>
+        </div>
+        <div className='row'>
+          <LikeButton movieId={movie.id} likes={likes} refreshNumberLikes={refreshNumberLikes} />
+          <DeleteButton movieId={movie.id} updateList={updateList} />
+        </div>
+      </div>
     </div>
   )
 }

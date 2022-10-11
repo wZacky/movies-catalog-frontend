@@ -7,14 +7,14 @@ function Navbar({loggedIn, setCredential}) {
   //const url = location.pathname;
   
   return (
-    <nav>
-      <p>Hola</p>
-      {loggedIn && <NavLink to="/" >Home</NavLink>}
-      {loggedIn && <NavLink to="/dashboard" >Dashboard</NavLink>}
-      {loggedIn && <NavLink to="/register-movie" >New Movie</NavLink>}
-      {loggedIn && <LogoutButton setCredential={setCredential} />}
-      {!loggedIn && <NavLink to="/login" >Login</NavLink>}
-    </nav>
+    <div className="container mt-4">
+      {/* <h2>My catalog</h2> */}
+      {loggedIn && <p><NavLink className="a-custom" to="/" >My catalog</NavLink></p>}
+      {loggedIn && <NavLink className="a-sub-custom ms-3" to="/dashboard" >Dashboard</NavLink>}
+      {loggedIn && <NavLink className="a-sub-custom ms-3" to="/register-movie" >New Movie</NavLink>}
+      {loggedIn && <LogoutButton className="btn btn-outline-primary" setCredential={setCredential} />}
+      {!loggedIn && <NavLink className="btn bg-login-btn" to="/login" >Login</NavLink>}
+    </div>
   )
 }
 

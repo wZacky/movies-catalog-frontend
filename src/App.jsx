@@ -20,7 +20,7 @@ function App() {
   }, [credential])
 
   return (
-    <div className="App">
+    <div className="container container-sm container-lg container-xl">
       <Navbar loggedIn={credential} setCredential={unlogged} />
       <Outlet context={[credential, setCredential]} />
     </div>

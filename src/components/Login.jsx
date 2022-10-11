@@ -1,6 +1,7 @@
 import { gql, useLazyQuery } from '@apollo/client';
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { useNavigate, useOutletContext } from 'react-router-dom';
+import { AppContext } from '../context/AppContext';
 
 const LOGIN_QUERY = gql`
   query Login ($email: String!, $password: String!) {
@@ -12,6 +13,7 @@ function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [credential, setCredential] = useOutletContext();
+  const {allUserMovies} = useContext(AppContext);
 
   const navigate = useNavigate();
 
@@ -22,6 +24,7 @@ function Login() {
 
       if (data.login) {
         setCredential(true);
+        allUserMovies(data.login)
         navigate("/dashboard");
       } else {
         setCredential(false);
@@ -52,15 +55,23 @@ function Login() {
 
   //console.log(data);
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <input onChange={e => setEmail(e.target.value)} type="text" placeholder='email' />
-        <input onChange={e => setPassword(e.target.value)} type="text" placeholder='password' />
+    <div className='container-fluid' style={{ maxWidth: '580px' }}>
+      <h1><span className='badge bg-secondary mt-4'>LOGIN</span></h1>
+      <form onSubmit={handleSubmit} className='col mt-5' style={{ maxWidth: '580px' }}>
+        <div className="mb-3">
+          <label>Email</label>
+          <input onChange={e => setEmail(e.target.value)} type="text" placeholder='email' className="form-control" />
+        </div>
+        <div className="mb-3">
+          <label>Password</label>
+          <input onChange={e => setPassword(e.target.value)} type="text" placeholder='password' className="form-control" />
+        </div>
       
-        <button>Login</button>
+        <button className='btn btn-outline-primary'>Login</button>
+        <button onClick={() => navigate("/")} className='btn btn-outline-warning'>Cancel</button>
       </form>
       
-      <p>{data?.login}</p>
+      {/* <p>{data?.login}</p> */}
     </div>
   )
 }
